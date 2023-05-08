@@ -25,7 +25,7 @@ def common_params(func: Callable):
         for key in ['prod', 'no_wait']:
             kwargs.pop(key, None)
 
-        console.log(f'Current env: [green]{config.ENV}[/green]')
+        console.log(f'Current env: [green]{config.ENV.value}[/green]')
         # config.load_services()
         return func(*args, **kwargs)
     return wrapper

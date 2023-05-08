@@ -69,9 +69,9 @@ class Config(metaclass=Singleton):
     Ec2InstanceType: str = 't3.small'
     ContainerEfsMountpoint: str = '/home/ec2-user/efsdata'
 
-    _instance = None
+    # _instance = None
 
-    ENV = DEPLOY_ENV
+    ENV: DeploymentEnv = DeploymentEnv.DEV
     TAG_ENV = TAG_ENV
     REGION = 'us-east-1'
     NO_WAIT: bool = False
@@ -120,9 +120,10 @@ class Config(metaclass=Singleton):
             'ContainerEfsMountpoint'
 
         ]
+
         _attrs = {key: val for key, val in yml_config.items()
                   if key in body_keys}
-
+        _attrs['ENV'] = env
         _attrs['services'] = []
         for service_type in ServiceType:
             for name, service in yml_config[service_type.value].items():

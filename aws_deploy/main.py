@@ -9,6 +9,7 @@ from aws_deploy.aws_lambda.commands import aws_lambda
 from aws_deploy.cli_common import common_params
 from aws_deploy.cloudformation.stack_creator import StackCreator
 from aws_deploy.cloudformation.stack_deleter import StackDeleter
+from aws_deploy.config import console
 
 log = logging.getLogger('deploy.cf.create_or_update')
 
@@ -36,8 +37,8 @@ def import_deploy():
         importlib.import_module(
             deploy_module_name, package=None)
 
-    except (ImportError, AttributeError) as e:
-        click.echo(f"Failed to load or execute deploy module: {e}")
+    except (ImportError, AttributeError):
+        console.log("deploy.py not found on current directory.")
 
 
 @click.group(context_settings=dict(help_option_names=["-h", "--help"]))
