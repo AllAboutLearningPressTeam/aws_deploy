@@ -10,10 +10,6 @@ class ResourceRemover(ABC):
     def __init__(self, resource: dict) -> None:
         self.resource = resource
 
-    @abstractmethod
-    def resource_client(self):
-        raise NotImplementedError
-
     def deleted(self):
         return self.resource['ResourceStatus'] == 'DELETE_COMPLETE'
 
@@ -23,14 +19,6 @@ class ResourceRemover(ABC):
 
 
 class S3BucketRemover(ResourceRemover):
-
-    def resource_client(self):
-
-        # this is a s3 bucket.
-        # we cant delete a s3 bucket without removing all objects
-        # from it. So force deleting it
-
-        return boto3.resource('s3')
 
     def should_delete(self):
 
@@ -44,7 +32,7 @@ class S3BucketRemover(ResourceRemover):
             "[red]Deleting Stack resource =>{} [/red]"
             .format(self.resource['PhysicalResourceId']))
 
-        client = self.resource_client()
+        client = boto3.resource('s3')
         bucket = client.Bucket(
             self.resource['PhysicalResourceId'])  # type: ignore
 

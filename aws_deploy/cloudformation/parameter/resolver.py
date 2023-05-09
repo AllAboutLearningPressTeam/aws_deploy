@@ -1,8 +1,7 @@
 from typing import Type
 
-from base import ParameterFactoryBase
-
 from . import db_password, general, ssm_stored
+from .base import ParameterFactoryBase
 
 
 # TODO: if service uses new domain then we need update alb certificate list
@@ -12,6 +11,13 @@ class NotDefined:
 
 
 class ResolverFactory:
+    _instance = None
+
+    # def __new__(cls, *args, **kwargs):
+    #     if not cls._instance:
+    #         cls._instance = super().__new__(*args, **kwargs)
+    #     return cls._instance
+
     _resolvers: dict[str, Type[ParameterFactoryBase]] = {
         'FullGithubRepositoryId': general.GeneralParameter,
         'ServiceUrl': general.GeneralParameter,
@@ -44,17 +50,17 @@ class ResolverFactory:
         'ContainerEfsMountpoint': general.ConfigConstant,
 
 
-        'DotEnvStore': ssm_stored.UpdatableSSM,
-        'HsApiKeyStore': ssm_stored.UpdatableSSM,
-        'BcClientIdStore': ssm_stored.UpdatableSSM,
-        'BcClientSecretStore': ssm_stored.UpdatableSSM,
-        'ConfigStore': ssm_stored.UpdatableSSM,
-        'AlgoliaAppIdStore': ssm_stored.UpdatableSSM,
-        'AlgoliaWriteKeyStore': ssm_stored.UpdatableSSM,
-        'IdevSshKeyStore': ssm_stored.UpdatableSSM,
-        'AppKeyStore': ssm_stored.UpdatableSSM,
-        'GhTokenStore': ssm_stored.UpdatableSSM,
-        'SentryAuthTokenStore': ssm_stored.UpdatableSSM,
+        # 'DotEnvStore': ssm_stored.UpdatableSSM,
+        # 'HsApiKeyStore': ssm_stored.UpdatableSSM,
+        # 'BcClientIdStore': ssm_stored.UpdatableSSM,
+        # 'BcClientSecretStore': ssm_stored.UpdatableSSM,
+        # 'ConfigStore': ssm_stored.UpdatableSSM,
+        # 'AlgoliaAppIdStore': ssm_stored.UpdatableSSM,
+        # 'AlgoliaWriteKeyStore': ssm_stored.UpdatableSSM,
+        # 'IdevSshKeyStore': ssm_stored.UpdatableSSM,
+        # 'AppKeyStore': ssm_stored.UpdatableSSM,
+        # 'GhTokenStore': ssm_stored.UpdatableSSM,
+        # 'SentryAuthTokenStore': ssm_stored.UpdatableSSM,
 
         # 'LambdaRoleName': LambdaRoleNameParameter,
     }

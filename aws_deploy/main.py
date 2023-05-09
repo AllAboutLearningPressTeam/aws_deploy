@@ -1,4 +1,3 @@
-import importlib
 import logging
 
 import click
@@ -22,7 +21,6 @@ failed_stack_statuses = [
     'ROLLBACK_FAILED'
     # 'UPDATE_ROLLBACK_COMPLETE'
 ]
-deploy_module_name = "deploy"
 
 
 class StdCommand(click.core.Command):
@@ -34,10 +32,10 @@ class StdCommand(click.core.Command):
 
 def import_deploy():
     try:
-        importlib.import_module(
-            deploy_module_name, package=None)
+        import deploy  # type: ignore # noqa: F401
 
-    except (ImportError, AttributeError):
+    except (ImportError, AttributeError) as e:
+        console.log(e)
         console.log("deploy.py not found on current directory.")
 
 
