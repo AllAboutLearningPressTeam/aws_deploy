@@ -93,7 +93,6 @@ files = [
 [package.dependencies]
 botocore-stubs = "*"
 types-s3transfer = "*"
-typing-extensions = {version = ">=4.1.0", markers = "python_version < \"3.9\""}
 
 [package.extras]
 accessanalyzer = ["mypy-boto3-accessanalyzer (>=1.26.0,<1.27.0)"]
@@ -477,7 +476,6 @@ files = [
 
 [package.dependencies]
 types-awscrt = "*"
-typing-extensions = {version = ">=4.1.0", markers = "python_version < \"3.9\""}
 
 [[package]]
 name = "certifi"
@@ -860,9 +858,6 @@ files = [
     {file = "mypy_boto3_cloudformation-1.26.108-py3-none-any.whl", hash = "sha256:566487e5037170f58229af7f9fb2c62b0e98e5a1aa5bcd5eef54afb38a214561"},
 ]
 
-[package.dependencies]
-typing-extensions = {version = ">=4.1.0", markers = "python_version < \"3.9\""}
-
 [[package]]
 name = "mypy-boto3-ec2"
 version = "1.26.122"
@@ -874,9 +869,6 @@ files = [
     {file = "mypy-boto3-ec2-1.26.122.tar.gz", hash = "sha256:f1347766305b04043835c8860fbb3d52e6f0dcb87b88c3d6b13a5b145bce0eb3"},
     {file = "mypy_boto3_ec2-1.26.122-py3-none-any.whl", hash = "sha256:a1ff932297a65d9da021b7d1d122cb40f2ea22ac926794193cbda37b842a8965"},
 ]
-
-[package.dependencies]
-typing-extensions = {version = ">=4.1.0", markers = "python_version < \"3.9\""}
 
 [[package]]
 name = "mypy-boto3-ecr"
@@ -920,9 +912,6 @@ files = [
     {file = "mypy_boto3_lambda-1.26.122-py3-none-any.whl", hash = "sha256:2839045d23b48f7a99ac3fdc71bcecde15998245c6e515b1cf2e8f589a9ae23e"},
 ]
 
-[package.dependencies]
-typing-extensions = {version = ">=4.1.0", markers = "python_version < \"3.9\""}
-
 [[package]]
 name = "mypy-boto3-s3"
 version = "1.26.127"
@@ -934,9 +923,6 @@ files = [
     {file = "mypy-boto3-s3-1.26.127.tar.gz", hash = "sha256:0e548b97c6a2589f7bff5d26a1ca101622749771379226e3ad0822629d0613c5"},
     {file = "mypy_boto3_s3-1.26.127-py3-none-any.whl", hash = "sha256:21e647caa18d98dbbc706597c9b27d41674f18850f42b2cfdb9a39b39820e470"},
 ]
-
-[package.dependencies]
-typing-extensions = {version = ">=4.1.0", markers = "python_version < \"3.9\""}
 
 [[package]]
 name = "mypy-boto3-ssm"
@@ -1352,7 +1338,6 @@ files = [
 [package.dependencies]
 markdown-it-py = ">=2.2.0,<3.0.0"
 pygments = ">=2.13.0,<3.0.0"
-typing-extensions = {version = ">=4.0.0,<5.0", markers = "python_version < \"3.9\""}
 
 [package.extras]
 jupyter = ["ipywidgets (>=7.5.1,<9)"]
@@ -1612,5 +1597,5 @@ h11 = ">=0.9.0,<1"
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.8.1"
-content-hash = "872f17bef42714e403429cfce197cf442fde8f31c4210645ccac48a7880c32e2"
+python-versions = "^3.10.0"
+content-hash = "b3ed17b0708b5652a4164700aec2da9a2301030eecd657dc917bbb01797a105c"
