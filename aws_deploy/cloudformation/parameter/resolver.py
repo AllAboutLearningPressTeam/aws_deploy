@@ -49,20 +49,6 @@ class ResolverFactory:
         'DbUser': general.DBUserName,
         'ContainerEfsMountpoint': general.ConfigConstant,
 
-
-        # 'DotEnvStore': ssm_stored.UpdatableSSM,
-        # 'HsApiKeyStore': ssm_stored.UpdatableSSM,
-        # 'BcClientIdStore': ssm_stored.UpdatableSSM,
-        # 'BcClientSecretStore': ssm_stored.UpdatableSSM,
-        # 'ConfigStore': ssm_stored.UpdatableSSM,
-        # 'AlgoliaAppIdStore': ssm_stored.UpdatableSSM,
-        # 'AlgoliaWriteKeyStore': ssm_stored.UpdatableSSM,
-        # 'IdevSshKeyStore': ssm_stored.UpdatableSSM,
-        # 'AppKeyStore': ssm_stored.UpdatableSSM,
-        # 'GhTokenStore': ssm_stored.UpdatableSSM,
-        # 'SentryAuthTokenStore': ssm_stored.UpdatableSSM,
-
-        # 'LambdaRoleName': LambdaRoleNameParameter,
     }
 
     def register(self, name: str, factory: Type[ParameterFactoryBase]):
