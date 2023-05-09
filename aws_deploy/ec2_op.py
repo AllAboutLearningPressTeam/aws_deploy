@@ -16,7 +16,7 @@ class EcsEc2:
         if not self._instances:
             resp = self.client.describe_instances(
                 Filters=[{'Name': 'tag:deployment',
-                          'Values': [self.config.ENV.value]},
+                          'Values': [str(self.config.ENV)]},
                          {
                     'Name': 'instance-state-name',
                     'Values': ['running']
@@ -34,7 +34,7 @@ class EcsEc2:
     def ec2_ip(self, service_name: str | None = None) -> str:  # type: ignore
         if not service_name:
             return self.instances[0]['PublicIpAddress']
-        cluster = f'{self.config.ENV.value}-ec2'
+        cluster = f'{self.config.ENV}-ec2'
         client = boto3.client('ecs')
         task_arn = client.list_tasks(
             cluster=cluster,

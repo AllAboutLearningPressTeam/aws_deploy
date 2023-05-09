@@ -62,7 +62,7 @@ class LoginAdminer:
             service = self.config.find_service('adminer')
         except ServiceTemplateNotFound:
             console.log(
-                "[red]Add adminer service in config/{}.yml[/red]".format(self.config.ENV.value))  # noqa: E501
+                "[red]Add adminer service in config/{}.yml[/red]".format(self.config.ENV))  # noqa: E501
             exit(1)
         self.driver.get(
             "https://{}".format(service.ServiceUrl))  # type: ignore
