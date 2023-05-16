@@ -55,7 +55,7 @@ class ServiceParameter(ParameterFactoryBase):
 
 class EnvironmentName(ParameterFactoryBase):
     def resolve(self, param_key: str):
-        return Config().ENV
+        return str(Config().ENV)
 
 
 # class CodeStarConnectionArnParameter(TemplateParameter):

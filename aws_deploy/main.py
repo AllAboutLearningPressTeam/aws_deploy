@@ -34,8 +34,8 @@ def import_deploy():
     try:
         import deploy  # type: ignore # noqa: F401
 
-    except (ImportError, AttributeError) as e:
-        console.log(e)
+    except (ImportError, AttributeError):
+        # console.log(e)
         console.log("deploy.py not found on current directory.")
 
 

@@ -1,5 +1,6 @@
 import boto3
 from botocore import exceptions
+from botocore.exceptions import ValidationError
 from mypy_boto3_cloudformation import CloudFormationClient
 
 from aws_deploy.cloudformation.parameter_manager import ParameterManager
@@ -63,7 +64,7 @@ class StackCreator:
 
             {
                 'Key': 'deployment',
-                'Value': self.config.ENV
+                'Value': str(self.config.ENV)
             },
             {
                 'Key': 'stack',
@@ -121,8 +122,9 @@ class StackCreator:
 
             return CloudformationStack.from_dict(  # type : ignore
                 resp['Stacks'][0])  # type : ignore
-        except self.cf.exceptions.StackNotFoundException as e:
-            console.log(e)
+
+        except self.cf.exceptions.ClientError:
+            console.log('Stack doesnt exist. ')
             return None
 
     def _stack_failed(self, stack):
@@ -140,6 +142,7 @@ class StackCreator:
                 console.log(
                     f'Previous update in progress for: {self.template.service.Name}')  # noqa: E501
                 return
+        console.log("[green]Resolving stack parameters...[/green]")
         params = self.create_stack_params(self.stack_name)
         waiter_status = None
         if not stack:
